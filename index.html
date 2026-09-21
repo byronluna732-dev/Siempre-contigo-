@@ -1,594 +1,613 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti ❤️ Spider-Man & Gwen Style</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Comic Sans MS", sans-serif;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti ❤️ Spider-Man & Gwen Style</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Comic Sans MS", sans-serif;
+        }
 
-        body {
-            background-color: #0b0914;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 42, 133, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.2) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            overflow-x: hidden;
-            position: relative;
-        }
+        body {
+            background-color: #fbe8f1;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 133, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(244, 194, 215, 0.4) 0%, transparent 70%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #2b1b2d;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-        #spider-web-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
+        #spider-web-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        .main-wrapper {
-            width: 100%;
-            max-width: 520px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
+        .main-wrapper {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
 
-        .step-page {
-            display: none;
-            animation: fadeInGwen 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(18, 15, 36, 0.85);
-            backdrop-filter: blur(12px);
-            border: 2px solid #ff2a85;
-            box-shadow: 0 0 20px rgba(255, 42, 133, 0.4), 0 0 40px rgba(0, 240, 255, 0.2);
-            border-radius: 25px;
-            padding: 25px 20px;
-        }
+        .step-page {
+            display: none;
+            animation: fadeInGwen 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 2px solid #ff2a85;
+            box-shadow: 0 8px 32px rgba(255, 42, 133, 0.25), 0 0 15px rgba(0, 240, 255, 0.2);
+            border-radius: 25px;
+            padding: 25px 20px;
+        }
 
-        .step-page.active {
-            display: block;
-        }
+        .step-page.active {
+            display: block;
+        }
 
-        @keyframes fadeInGwen {
-            from { 
-                opacity: 0; 
-                transform: scale(0.9) translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: scale(1) translateY(0); 
-            }
-        }
+        @keyframes fadeInGwen {
+            from { 
+                opacity: 0; 
+                transform: scale(0.92) translateY(15px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
 
-        h1 {
-            color: #ff2a85;
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(255, 42, 133, 0.8), 2px 2px #00f0ff;
-            letter-spacing: 1px;
-        }
+        h1 {
+            color: #ff1493;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 1px 1px 0px #00f0ff;
+            letter-spacing: 0.5px;
+        }
 
-        h2 {
-            color: #00f0ff;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.7), -1px 1px #ff2a85;
-        }
+        h2 {
+            color: #ff2a85;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 0px rgba(0, 240, 255, 0.5);
+        }
 
-        p {
-            line-height: 1.6;
-            color: #e0e0e0;
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-            text-align: left;
-        }
+        p {
+            line-height: 1.6;
+            color: #4a3b4e;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-        .spider-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff2a85, #00f0ff);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-        }
+        .spider-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff2a85, #00f0ff);
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(255, 42, 133, 0.3);
+        }
 
-        .btn-pink {
-            background: linear-gradient(135deg, #ff2a85 0%, #ff0055 50%, #8a2be2 100%);
-            color: white;
-            border: 2px solid #00f0ff;
-            padding: 16px 32px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 42, 133, 0.6);
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-top: 15px;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .btn-pink {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff0055 50%, #8a2be2 100%);
+            color: white;
+            border: 2px solid #00f0ff;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 42, 133, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 15px;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        .btn-pink:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
-            background: linear-gradient(135deg, #00f0ff 0%, #ff2a85 100%);
-            color: #000;
-        }
+        .btn-pink:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.6);
+            background: linear-gradient(135deg, #00f0ff 0%, #ff2a85 100%);
+            color: #ffffff;
+        }
 
-        .media-container {
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-            margin-bottom: 20px;
-            border: 2px solid #ff2a85;
-            position: relative;
-            background: #000;
-        }
+        .media-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            border: 2px solid #ff2a85;
+            position: relative;
+            background: #000000;
+        }
 
-        .media-container img, .media-container video {
-            width: 100%;
-            height: 330px;
-            object-fit: cover;
-            display: block;
-        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+        }
 
-        .music-controller {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 999;
-            background: rgba(18, 15, 36, 0.9);
-            border: 2px solid #00f0ff;
-            border-radius: 30px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-            cursor: pointer;
-        }
+        .music-controller {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff2a85;
+            border-radius: 30px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(255, 42, 133, 0.3);
+            cursor: pointer;
+        }
 
-        .music-controller span {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #ff2a85;
-        }
+        .music-controller span {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ff2a85;
+        }
 
-        .sound-wave {
-            display: flex;
-            align-items: flex-end;
-            gap: 3px;
-            height: 15px;
-        }
+        .sound-wave {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 15px;
+        }
 
-        .sound-wave div {
-            width: 3px;
-            background: #00f0ff;
-            height: 100%;
-            border-radius: 3px;
-            animation: wave 1s ease-in-out infinite alternate;
-        }
+        .sound-wave div {
+            width: 3px;
+            background: #00f0ff;
+            height: 100%;
+            border-radius: 3px;
+            animation: wave 1s ease-in-out infinite alternate;
+        }
 
-        .sound-wave.paused div {
-            animation-play-state: paused;
-            height: 4px;
-        }
+        .sound-wave.paused div {
+            animation-play-state: paused;
+            height: 4px;
+        }
 
-        .sound-wave div:nth-child(2) { animation-delay: 0.2s; }
-        .sound-wave div:nth-child(3) { animation-delay: 0.4s; }
+        .sound-wave div:nth-child(2) { animation-delay: 0.2s; }
+        .sound-wave div:nth-child(3) { animation-delay: 0.4s; }
 
-        @keyframes wave {
-            0% { height: 4px; }
-            100% { height: 16px; }
-        }
+        @keyframes wave {
+            0% { height: 4px; }
+            100% { height: 16px; }
+        }
 
-        .moving-area {
-            position: relative;
-            height: 400px;
-            margin: 20px 0;
-            overflow: hidden;
-            border: 1px dashed rgba(0, 240, 255, 0.3);
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.2);
-        }
+        .moving-area {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 2px dashed rgba(255, 42, 133, 0.4);
+            border-radius: 20px;
+            background: rgba(255, 240, 245, 0.6);
+        }
 
-        .floating-gift {
-            position: absolute;
-            background: rgba(25, 20, 45, 0.95);
-            border: 2px solid #ff2a85;
-            border-radius: 18px;
-            padding: 15px;
-            width: 84%;
-            left: 8%;
-            cursor: pointer;
-            box-shadow: 0 0 12px rgba(255, 42, 133, 0.4);
-            transition: all 0.3s;
-            text-align: center;
-        }
+        .floating-gift {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff2a85;
+            border-radius: 18px;
+            padding: 15px;
+            width: 84%;
+            left: 8%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 42, 133, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+        }
 
-        .floating-gift.revealed {
-            animation: none !important;
-            background: rgba(18, 15, 36, 0.98);
-            border-color: #00f0ff;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
-        }
+        .floating-gift.revealed {
+            animation: none !important;
+            background: #ffffff;
+            border-color: #00f0ff;
+            box-shadow: 0 6px 18px rgba(0, 240, 255, 0.4);
+        }
 
-        @keyframes floatLeftRight1 {
-            0%, 100% { transform: translateX(-15px); }
-            50% { transform: translateX(15px); }
-        }
+        @keyframes floatLeftRight1 {
+            0%, 100% { transform: translateX(-12px); }
+            50% { transform: translateX(12px); }
+        }
 
-        @keyframes floatLeftRight2 {
-            0%, 100% { transform: translateX(20px); }
-            50% { transform: translateX(-20px); }
-        }
+        @keyframes floatLeftRight2 {
+            0%, 100% { transform: translateX(15px); }
+            50% { transform: translateX(-15px); }
+        }
 
-        .gift-1 { top: 15px; animation: floatLeftRight1 3.5s ease-in-out infinite; }
-        .gift-2 { top: 105px; animation: floatLeftRight2 4s ease-in-out infinite; }
-        .gift-3 { top: 195px; animation: floatLeftRight1 3.8s ease-in-out infinite; }
-        .gift-4 { top: 285px; animation: floatLeftRight2 4.2s ease-in-out infinite; }
+        .gift-1 { top: 15px; animation: floatLeftRight1 3.5s ease-in-out infinite; }
+        .gift-2 { top: 105px; animation: floatLeftRight2 4s ease-in-out infinite; }
+        .gift-3 { top: 195px; animation: floatLeftRight1 3.8s ease-in-out infinite; }
+        .gift-4 { top: 285px; animation: floatLeftRight2 4.2s ease-in-out infinite; }
 
-        .gift-title {
-            font-weight: bold;
-            color: #00f0ff;
-            font-size: 1rem;
-        }
+        .gift-title {
+            font-weight: bold;
+            color: #ff2a85;
+            font-size: 1rem;
+        }
 
-        .gift-text {
-            display: none;
-            color: #ffffff;
-            font-size: 0.95rem;
-            margin-top: 8px;
-            border-top: 1px solid rgba(255, 42, 133, 0.3);
-            padding-top: 8px;
-        }
+        .gift-text {
+            display: none;
+            color: #333333;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            border-top: 1px solid rgba(255, 42, 133, 0.3);
+            padding-top: 8px;
+        }
 
-        .spidey-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px #ff2a85);
-        }
-    </style>
+        .spidey-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 5px rgba(255, 42, 133, 0.4));
+        }
+    </style>
 </head>
 <body>
 
-    <canvas id="spider-web-canvas"></canvas>
+    <canvas id="spider-web-canvas"></canvas>
 
-    <div class="music-controller" onclick="toggleMusic()">
-        <span>🎵 Machu Picchu</span>
-        <div class="sound-wave" id="wave-anim">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+    <div class="music-controller" onclick="toggleMusic()">
+        <span>🎵 Machu Picchu</span>
+        <div class="sound-wave" id="wave-anim">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://ia801503.us.archive.org/15/items/camilo-evaluna-montaner-machu-picchu/Camilo%2C%20Evaluna%20Montaner%20-%20Machu%20Picchu.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://ia801503.us.archive.org/15/items/camilo-evaluna-montaner-machu-picchu/Camilo%2C%20Evaluna%20Montaner%20-%20Machu%20Picchu.mp3" type="audio/mpeg">
+    </audio>
 
-    <div class="main-wrapper">
+    <div class="main-wrapper">
 
-        <!-- PASO 1: Bienvenida -->
-        <div id="step-1" class="step-page active">
-            <div class="spidey-icon">🕷️❤️🕸️</div>
-            <h1>¡Olaa Mi ANI!</h1>
-            <p style="text-align: center; margin-bottom: 25px;">
-                En cada universo te elegiría a ti. Prepara un momento tranquilo, activa tu volumen y presiona el botón para comenzar nuestra historia.
-            </p>
-            <button class="btn-pink" onclick="startApp()">Entrar al Spider-Verso 💖</button>
-        </div>
+        <!-- PASO 1: Bienvenida -->
+        <div id="step-1" class="step-page active">
+            <div class="spidey-icon">🕷️❤️🕸️</div>
+            <h1>¡Olaa Mi ANI!</h1>
+            <p style="text-align: center; margin-bottom: 25px;">
+                En cada universo te elegiría a ti. Prepara un momento tranquilo, activa tu volumen y presiona el botón para comenzar nuestra historia.
+            </p>
+            <button class="btn-pink" onclick="startApp()">Entrar al Spider-Verso 💖</button>
+        </div>
 
-        <!-- PASO 2: Recuerdo 1 (Foto 1) -->
-        <div id="step-2" class="step-page">
-            <span class="spider-badge">Foto 1 / 4 📸</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <img src="a1.jpg" alt="Foto 1">
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTA FOTO TIENE UN SIGNIFICADO PRECIOSO SABES, FUE LA PRIMERA VEZ QUE SALIMOS Y NOS PUDIMOS CONOCER (ESE DIA NO SABES QUE NERVIOSO ESTABA) Y FUISTE A MI PARTIDO ESO NUNCA EN MI VIDA SE ME VA OLVIDAR TE AMO SABES.</p>
-            <button class="btn-pink" onclick="goToStep(3)">Siguiente recuerdo ➔</button>
-        </div>
+        <!-- PASO 2: Recuerdo 1 (Foto 1) -->
+        <div id="step-2" class="step-page">
+            <span class="spider-badge">Foto 1 / 4 📸</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <img src="a1.jpg" alt="Foto 1">
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTA FOTO TIENE UN SIGNIFICADO PRECIOSO SABES, FUE LA PRIMERA VEZ QUE SALIMOS Y NOS PUDIMOS CONOCER (ESE DIA NO SABES QUE NERVIOSO ESTABA) Y FUISTE A MI PARTIDO ESO NUNCA EN MI VIDA SE ME VA OLVIDAR TE AMO SABES.</p>
+            <button class="btn-pink" onclick="goToStep(3)">Siguiente recuerdo ➔</button>
+        </div>
 
-        <!-- PASO 3: Recuerdo 2 (Foto 2) -->
-        <div id="step-3" class="step-page">
-            <span class="spider-badge">Foto 2 / 4 📸</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <img src="a2.jpg" alt="Foto 2">
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTE IGUAL ES UNA FOTO CON GRAN SIGNIFICADO ESE DIA FUE UNO DE LOS MEJORES SEGUNDA CITA HERMOSA POR CIERTO FUE UNO DE LOS MEJORES DIAS DE MI VIDA SABES.</p>
-            <button class="btn-pink" onclick="goToStep(4)">Siguiente recuerdo ➔</button>
-        </div>
+        <!-- PASO 3: Recuerdo 2 (Foto 2) -->
+        <div id="step-3" class="step-page">
+            <span class="spider-badge">Foto 2 / 4 📸</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <img src="a2.jpg" alt="Foto 2">
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE IGUAL ES UNA FOTO CON GRAN SIGNIFICADO ESE DIA FUE UNO DE LOS MEJORES SEGUNDA CITA HERMOSA POR CIERTO FUE UNO DE LOS MEJORES DIAS DE MI VIDA SABES.</p>
+            <button class="btn-pink" onclick="goToStep(4)">Siguiente recuerdo ➔</button>
+        </div>
 
-        <!-- PASO 4: Recuerdo 3 (Foto 3) -->
-        <div id="step-4" class="step-page">
-            <span class="spider-badge">Foto 3 / 4 📸</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <img src="a3.jpg" alt="Foto 3">
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTE RECUERDO QUE ESTABA EN INGLES, NO DEJABA DE PENSAR EN TI BUENO NUNCA DEJO DE PENSAR EN ESTA PRINCESA Y QUISE HACER ESE CORAZON PARA TI.</p>
-            <button class="btn-pink" onclick="goToStep(5)">Siguiente recuerdo ➔</button>
-        </div>
+        <!-- PASO 4: Recuerdo 3 (Foto 3) -->
+        <div id="step-4" class="step-page">
+            <span class="spider-badge">Foto 3 / 4 📸</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <img src="a3.jpg" alt="Foto 3">
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE RECUERDO QUE ESTABA EN INGLES, NO DEJABA DE PENSAR EN TI BUENO NUNCA DEJO DE PENSAR EN ESTA PRINCESA Y QUISE HACER ESE CORAZON PARA TI.</p>
+            <button class="btn-pink" onclick="goToStep(5)">Siguiente recuerdo ➔</button>
+        </div>
 
-        <!-- PASO 5: Recuerdo 4 (Foto 4) -->
-        <div id="step-5" class="step-page">
-            <span class="spider-badge">Foto 4 / 4 📸</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <img src="a4.jpg" alt="Foto 4">
-            </div>
-            <p><strong>Lo que sentí este día:</strong> EN ESTA RECUERDO QUE ESTABA TRISTE PORQUE NO SALISTE JSJS, PERO FUE UN GRAN DIA PORQUE CONOCI A TU MAMI ME DEJASTE ENTRAR A TU CASITA Y NO SABES CUANTO APRECIO ESO RECUERDO QUE ESTABA MUY NERVIOSO PERO CONTENTO 10 MINUTOS SE NOS HIZO MAS DE 1 HORA JSJS HERMOSOOO.</p>
-            <button class="btn-pink" onclick="goToStep(6)">Ver los videos 🎥➔</button>
-        </div>
+        <!-- PASO 5: Recuerdo 4 (Foto 4) -->
+        <div id="step-5" class="step-page">
+            <span class="spider-badge">Foto 4 / 4 📸</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <img src="a4.jpg" alt="Foto 4">
+            </div>
+            <p><strong>Lo que sentí este día:</strong> EN ESTA RECUERDO QUE ESTABA TRISTE PORQUE NO SALISTE JSJS, PERO FUE UN GRAN DIA PORQUE CONOCI A TU MAMI ME DEJASTE ENTRAR A TU CASITA Y NO SABES CUANTO APRECIO ESO RECUERDO QUE ESTABA MUY NERVIOSO PERO CONTENTO 10 MINUTOS SE NOS HIZO MAS DE 1 HORA JSJS HERMOSOOO.</p>
+            <button class="btn-pink" onclick="goToStep(6)">Ver los videos 🎥➔</button>
+        </div>
 
-        <!-- PASO 6: Recuerdo 5 (Video 1) -->
-        <div id="step-6" class="step-page">
-            <span class="spider-badge">Video 1 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.02.55 PM" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong> TE RECUERDAS DE ESE DIA? FUE CUANDO FUISITE A LA PLAYITA, CUANDO ME DIJISTE QUE DIJISTE QUE NO ME PENSABAS DEJAR, CUANDO ME DIJSITE QUE ME IBAS A MADAR VIDEITOS Y NO IMPORTABA SI NO TE HABLABA QUE IBAS A LUCHAR QUIERO QUE VUELVA A PASAR</p>
-            <button class="btn-pink" onclick="goToStep(7)">Siguiente video ➔</button>
-        </div>
+        <!-- PASO 6: Recuerdo 5 (Video 1) -->
+        <div id="step-6" class="step-page">
+            <span class="spider-badge">Video 1 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.02.55 PM.mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.02.55 PM" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> TE RECUERDAS DE ESE DIA? FUE CUANDO FUISITE A LA PLAYITA, CUANDO ME DIJISTE QUE DIJISTE QUE NO ME PENSABAS DEJAR, CUANDO ME DIJSITE QUE ME IBAS A MADAR VIDEITOS Y NO IMPORTABA SI NO TE HABLABA QUE IBAS A LUCHAR QUIERO QUE VUELVA A PASAR</p>
+            <button class="btn-pink" onclick="goToStep(7)">Siguiente video ➔</button>
+        </div>
 
-        <!-- PASO 7: Recuerdo 6 (Video 2) -->
-        <div id="step-7" class="step-page">
-            <span class="spider-badge">Video 2 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTE ME ENCANTA SABES, PORQUE ME GUSTA QUE ME MANDES VIDEOS ASI PORQUE SOLO CON VERTE ME ALEGRA MI DIA.</p>
-            <button class="btn-pink" onclick="goToStep(8)">Siguiente video ➔</button>
-        </div>
+        <!-- PASO 7: Recuerdo 6 (Video 2) -->
+        <div id="step-7" class="step-page">
+            <span class="spider-badge">Video 2 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.03.16 PM.mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE ME ENCANTA SABES, PORQUE ME GUSTA QUE ME MANDES VIDEOS ASI PORQUE SOLO CON VERTE ME ALEGRA MI DIA.</p>
+            <button class="btn-pink" onclick="goToStep(8)">Siguiente video ➔</button>
+        </div>
 
-        <!-- PASO 8: Recuerdo 7 (Video 3) -->
-        <div id="step-8" class="step-page">
-            <span class="spider-badge">Video 3 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (2)" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTE ME ENCANTA DONDE VAS EN EL CARRITO CON LA HERMOSA BB ME ENCANTO ESE DIA PORQUE ME COMPARTES TU DIA SABES.</p>
-            <button class="btn-pink" onclick="goToStep(9)">Siguiente video ➔</button>
-        </div>
+        <!-- PASO 8: Recuerdo 7 (Video 3) -->
+        <div id="step-8" class="step-page">
+            <span class="spider-badge">Video 3 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.03.16 PM (2).mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (2)" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE ME ENCANTA DONDE VAS EN EL CARRITO CON LA HERMOSA BB ME ENCANTO ESE DIA PORQUE ME COMPARTES TU DIA SABES.</p>
+            <button class="btn-pink" onclick="goToStep(9)">Siguiente video ➔</button>
+        </div>
 
-        <!-- PASO 9: Recuerdo 8 (Video 4) -->
-        <div id="step-9" class="step-page">
-            <span class="spider-badge">Video 4 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (1)" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong>ESTE IGUAL ME ENCANTA PORQUE ME AVISASTE QUE LLEGASTE BIEN Y ME ENCANTA QUE HAGAS ESO PORQUE ME DEJA TRANQUILO SABER QUE ESTAS BIEN Y TE VEZ PRECIOSA.</p>
-            <button class="btn-pink" onclick="goToStep(10)">Siguiente video ➔</button>
-        </div>
+        <!-- PASO 9: Recuerdo 8 (Video 4) -->
+        <div id="step-9" class="step-page">
+            <span class="spider-badge">Video 4 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.03.16 PM (1).mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (1)" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE IGUAL ME ENCANTA PORQUE ME AVISASTE QUE LLEGASTE BIEN Y ME ENCANTA QUE HAGAS ESO PORQUE ME DEJA TRANQUILO SABER QUE ESTAS BIEN Y TE VEZ PRECIOSA.</p>
+            <button class="btn-pink" onclick="goToStep(10)">Siguiente video ➔</button>
+        </div>
 
-        <!-- PASO 10: Recuerdo 9 (Video 5) -->
-        <div id="step-10" class="step-page">
-            <span class="spider-badge">Video 5 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.03.18 PM" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong>ESTE ES UN RECUERDO LINDO SABES, PORQUE EN ESTE ME DIJISTE QUE ESTABA PRECIOCOSO Y ME DIJISTE TE AMO, FUE LA PRIMERA VEZ QUE ME DIJISTE TE AMO.</p>
-            <button class="btn-pink" onclick="goToStep(11)">Siguiente video ➔</button>
-        </div>
+        <!-- PASO 10: Recuerdo 9 (Video 5) -->
+        <div id="step-10" class="step-page">
+            <span class="spider-badge">Video 5 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.03.18 PM.mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.03.18 PM" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE ES UN RECUERDO LINDO SABES, PORQUE EN ESTE ME DIJISTE QUE ESTABA PRECIOCOSO Y ME DIJISTE TE AMO, FUE LA PRIMERA VEZ QUE ME DIJISTE TE AMO.</p>
+            <button class="btn-pink" onclick="goToStep(11)">Siguiente video ➔</button>
+        </div>
 
-        <!-- PASO 11: Recuerdo 10 (Video 6) -->
-        <div id="step-11" class="step-page">
-            <span class="spider-badge">Video 6 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (3)" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong>ESTE TAMBIEN ME ENCANTO PORQUE ME AVISASTE QUE ESTABAS BIEN EH IGUAL TE VEZ PRECIOSA NO HAY PALABRAS SUFICIENTES PARA DESCRIBIR TODA TU BELLEZA, PERO ESTE ME HACE SENTIR TRISTE PORQUE FUE EL ULTIMO AUNQUE ESE DIA ME DIJISTE TE AMO EN UN AUDIO Y ESTABA MUY CONTENTO SABES. </p>
-            <button class="btn-pink" onclick="goToStep(12)">Último video ➔</button>
-        </div>
+        <!-- PASO 11: Recuerdo 10 (Video 6) -->
+        <div id="step-11" class="step-page">
+            <span class="spider-badge">Video 6 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.03.16 PM (3).mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.03.16 PM (3)" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE TAMBIEN ME ENCANTO PORQUE ME AVISASTE QUE ESTABAS BIEN EH IGUAL TE VEZ PRECIOSA NO HAY PALABRAS SUFICIENTES PARA DESCRIBIR TODA TU BELLEZA, PERO ESTE ME HACE SENTIR TRISTE PORQUE FUE EL ULTIMO AUNQUE ESE DIA ME DIJISTE TE AMO EN UN AUDIO Y ESTABA MUY CONTENTO SABES.</p>
+            <button class="btn-pink" onclick="goToStep(12)">Último video ➔</button>
+        </div>
 
-        <!-- PASO 12: Recuerdo 11 (Video 7) -->
-        <div id="step-12" class="step-page">
-            <span class="spider-badge">Video 7 / 7 🎬</span>
-            <h2>Nuestros Momentos 💕</h2>
-            <div class="media-container">
-                <video controls poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80">
-                    <source src="WhatsApp Video 2026-09-20 at 10.46.05 PM" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-            </div>
-            <p><strong>Lo que sentí este día:</strong> ESTE ES EL MEJOR SABES, PORQUE SALIMOS POR SEGUNDA VEZ Y SABES, ESE DIA FUE UNO DE LOS MEJORES PORQUE VENIAMOS ABRAZADOS CON NUESTRAS MANOS AGARRADAS SABES FUE MUY LINDO Y NO TIENE COMPARACION.</p>
-            
-            <button class="btn-pink" onclick="goToStep(13)" style="margin-top: 25px; background: linear-gradient(135deg, #00f0ff 0%, #ff2a85 100%); color: #000;">
-                Sí Amor sigue ✨
-            </button>
-        </div>
+        <!-- PASO 12: Recuerdo 11 (Video 7) -->
+        <div id="step-12" class="step-page">
+            <span class="spider-badge">Video 7 / 7 🎬</span>
+            <h2>Nuestros Momentos 💕</h2>
+            <div class="media-container">
+                <video controls playsinline preload="metadata" onplay="pauseBgMusic()">
+                    <source src="videos/WhatsApp Video 2026-09-20 at 10.46.05 PM.mp4" type="video/mp4">
+                    <source src="WhatsApp Video 2026-09-20 at 10.46.05 PM" type="video/mp4">
+                    Tu navegador no soporta la reproducción de este video.
+                </video>
+            </div>
+            <p><strong>Lo que sentí este día:</strong> ESTE ES EL MEJOR SABES, PORQUE SALIMOS POR SEGUNDA VEZ Y SABES, ESE DIA FUE UNO DE LOS MEJORES PORQUE VENIAMOS ABRAZADOS CON NUESTRAS MANOS AGARRADAS SABES FUE MUY LINDO Y NO TIENE COMPARACION.</p>
+            
+            <button class="btn-pink" onclick="goToStep(13)" style="margin-top: 25px; background: linear-gradient(135deg, #ff2a85 0%, #00f0ff 100%); color: #ffffff;">
+                Sí Amor sigue ✨
+            </button>
+        </div>
 
-        <!-- PASO 13: Juego interactivo (Regalitos en movimiento) -->
-        <div id="step-13" class="step-page">
-            <h2>Toca un regalito 🎁</h2>
-            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 10px;">
-                Toca las tarjetas arácnidas en movimiento para detenerlas y leer sus mensajes secretos:
-            </p>
+        <!-- PASO 13: Juego interactivo -->
+        <div id="step-13" class="step-page">
+            <h2>Toca un regalito 🎁</h2>
+            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 10px;">
+                Toca las tarjetas arácnidas en movimiento para detenerlas y leer sus mensajes secretos:
+            </p>
 
-            <div class="moving-area">
-                <div class="floating-gift gift-1" onclick="revealGift(this)">
-                    <span class="gift-title">Un detalle para ti ✨</span>
-                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 1]</div>
-                </div>
+            <div class="moving-area">
+                <div class="floating-gift gift-1" onclick="revealGift(this)">
+                    <span class="gift-title">Un detalle para ti ✨</span>
+                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 1]</div>
+                </div>
 
-                <div class="floating-gift gift-2" onclick="revealGift(this)">
-                    <span class="gift-title">Algo importante 💕</span>
-                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 2]</div>
-                </div>
+                <div class="floating-gift gift-2" onclick="revealGift(this)">
+                    <span class="gift-title">Algo importante 💕</span>
+                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 2]</div>
+                </div>
 
-                <div class="floating-gift gift-3" onclick="revealGift(this)">
-                    <span class="gift-title">Para que lo recuerdes 🕷️</span>
-                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 3]</div>
-                </div>
+                <div class="floating-gift gift-3" onclick="revealGift(this)">
+                    <span class="gift-title">Para que lo recuerdes 🕷️</span>
+                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 3]</div>
+                </div>
 
-                <div class="floating-gift gift-4" onclick="revealGift(this)">
-                    <span class="gift-title">Con todo mi corazón 💗</span>
-                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 4]</div>
-                </div>
-            </div>
+                <div class="floating-gift gift-4" onclick="revealGift(this)">
+                    <span class="gift-title">Con todo mi corazón 💗</span>
+                    <div class="gift-text">[EDITA AQUÍ EL MENSAJE DEL REGALO 4]</div>
+                </div>
+            </div>
 
-            <button class="btn-pink" onclick="goToStep(14)">Continuar a la carta final 💌</button>
-        </div>
+            <button class="btn-pink" onclick="goToStep(14)">Continuar a la carta final 💌</button>
+        </div>
 
-        <!-- PASO 14: Carta Final -->
-        <div id="step-14" class="step-page">
-            <div style="font-size: 60px; margin-bottom: 15px; filter: drop-shadow(0 0 10px #ff2a85);">💌</div>
-            <h2>Para Mi Gwen Stacy</h2>
-            
-            <p>Hola,</p>
-            <p>[EDITA AQUÍ TU PÁRRAFO 1: Expresa lo mucho que significa para ti y tus sentimientos sinceros].</p>
-            <p>[EDITA AQUÍ TU PÁRRAFO 2: Recuérdale que para ti ella siempre ha sido más que suficiente].</p>
-            <p>[EDITA AQUÍ TU PÁRRAFO 3: Déjale saber que cuenta contigo sin presiones y a su propio tiempo].</p>
-            
-            <p style="text-align: center; font-style: italic; color: #00f0ff; margin-top: 30px; font-weight: 700; text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);">
-                [EDITA TU DESPEDIDA. Ej: En cada universo, tuyo siempre.]
-            </p>
-        </div>
+        <!-- PASO 14: Carta Final -->
+        <div id="step-14" class="step-page">
+            <div style="font-size: 60px; margin-bottom: 15px; filter: drop-shadow(0 2px 5px rgba(255, 42, 133, 0.4));">💌</div>
+            <h2>Para Mi Gwen Stacy</h2>
+            
+            <p>Hola,</p>
+            <p>[EDITA AQUÍ TU PÁRRAFO 1: Expresa lo mucho que significa para ti y tus sentimientos sinceros].</p>
+            <p>[EDITA AQUÍ TU PÁRRAFO 2: Recuérdale que para ti ella siempre ha sido más que suficiente].</p>
+            <p>[EDITA AQUÍ TU PÁRRAFO 3: Déjale saber que cuenta contigo sin presiones y a su propio tiempo].</p>
+            
+            <p style="text-align: center; font-style: italic; color: #ff2a85; margin-top: 30px; font-weight: 700; text-shadow: 0 0 5px rgba(255, 42, 133, 0.3);">
+                [EDITA TU DESPEDIDA. Ej: En cada universo, tuyo siempre.]
+            </p>
+        </div>
 
-    </div>
+    </div>
 
-    <script>
-        const audio = document.getElementById('bg-music');
-        const waveAnim = document.getElementById('wave-anim');
+    <script>
+        const audio = document.getElementById('bg-music');
+        const waveAnim = document.getElementById('wave-anim');
 
-        function startApp() {
-            audio.play().catch(e => console.log("Audio play prevented: ", e));
-            goToStep(2);
-        }
+        function startApp() {
+            audio.play().catch(e => console.log("Audio play prevented: ", e));
+            goToStep(2);
+        }
 
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                waveAnim.classList.remove('paused');
-            } else {
-                audio.pause();
-                waveAnim.classList.add('paused');
-            }
-        }
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                waveAnim.classList.remove('paused');
+            } else {
+                audio.pause();
+                waveAnim.classList.add('paused');
+            }
+        }
 
-        function goToStep(stepNumber) {
-            document.querySelectorAll('.step-page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById('step-' + stepNumber).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function pauseBgMusic() {
+            if (!audio.paused) {
+                audio.pause();
+                waveAnim.classList.add('paused');
+            }
+        }
 
-        function revealGift(element) {
-            if (!element.classList.contains('revealed')) {
-                element.classList.add('revealed');
-                const giftText = element.querySelector('.gift-text');
-                giftText.style.display = 'block';
-            }
-        }
+        function goToStep(stepNumber) {
+            // Pausar todos los videos al cambiar de paso
+            document.querySelectorAll('video').forEach(video => {
+                video.pause();
+            });
 
-        // Spider-Web Canvas Effect
-        const canvas = document.getElementById('spider-web-canvas');
-        const ctx = canvas.getContext('2d');
+            document.querySelectorAll('.step-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNumber).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        function revealGift(element) {
+            if (!element.classList.contains('revealed')) {
+                element.classList.add('revealed');
+                const giftText = element.querySelector('.gift-text');
+                giftText.style.display = 'block';
+            }
+        }
 
-        const nodes = [];
-        const nodeCount = 35;
+        // Spider-Web Canvas Effect
+        const canvas = document.getElementById('spider-web-canvas');
+        const ctx = canvas.getContext('2d');
 
-        for (let i = 0; i < nodeCount; i++) {
-            nodes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.8,
-                vy: (Math.random() - 0.5) * 0.8,
-                radius: Math.random() * 2 + 1
-            });
-        }
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-        function animateWeb() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const nodes = [];
+        const nodeCount = 35;
 
-            for (let i = 0; i < nodeCount; i++) {
-                let n1 = nodes[i];
-                n1.x += n1.vx;
-                n1.y += n1.vy;
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: (Math.random() - 0.5) * 0.8,
+                radius: Math.random() * 2 + 1
+            });
+        }
 
-                if (n1.x < 0 || n1.x > canvas.width) n1.vx *= -1;
-                if (n1.y < 0 || n1.y > canvas.height) n1.vy *= -1;
+        function animateWeb() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                ctx.beginPath();
-                ctx.arc(n1.x, n1.y, n1.radius, 0, Math.PI * 2);
-                ctx.fillStyle = i % 2 === 0 ? '#ff2a85' : '#00f0ff';
-                ctx.fill();
+            for (let i = 0; i < nodeCount; i++) {
+                let n1 = nodes[i];
+                n1.x += n1.vx;
+                n1.y += n1.vy;
 
-                for (let j = i + 1; j < nodeCount; j++) {
-                    let n2 = nodes[j];
-                    let dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+                if (n1.x < 0 || n1.x > canvas.width) n1.vx *= -1;
+                if (n1.y < 0 || n1.y > canvas.height) n1.vy *= -1;
 
-                    if (dist < 130) {
-                        ctx.beginPath();
-                        ctx.moveTo(n1.x, n1.y);
-                        ctx.lineTo(n2.x, n2.y);
-                        ctx.strokeStyle = i % 2 === 0 ? `rgba(255, 42, 133, ${1 - dist / 130})` : `rgba(0, 240, 255, ${1 - dist / 130})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
-                    }
-                }
-            }
+                ctx.beginPath();
+                ctx.arc(n1.x, n1.y, n1.radius, 0, Math.PI * 2);
+                ctx.fillStyle = i % 2 === 0 ? '#ff2a85' : '#00f0ff';
+                ctx.fill();
 
-            requestAnimationFrame(animateWeb);
-        }
-        animateWeb();
-    </script>
+                for (let j = i + 1; j < nodeCount; j++) {
+                    let n2 = nodes[j];
+                    let dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.moveTo(n1.x, n1.y);
+                        ctx.lineTo(n2.x, n2.y);
+                        ctx.strokeStyle = i % 2 === 0 ? `rgba(255, 42, 133, ${0.4 * (1 - dist / 130)})` : `rgba(0, 240, 255, ${0.4 * (1 - dist / 130)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateWeb);
+        }
+        animateWeb();
+    </script>
 </body>
-</html>        
+</html>
